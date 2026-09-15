@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KidMarket — A Safer Marketplace for Young Sellers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">🛍️</span> KidMarket</div>
+    <nav>
+      <a href="#browse">Browse</a>
+      <a href="#safety">Safety</a>
+      <button class="sell-btn" onclick="openSell()">+ Sell an item</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Made for young entrepreneurs • Parent/guardian supervised</p>
+        <h1>Sell your stuff.<br><span>Start something.</span></h1>
+        <p class="hero-copy">A kid-friendly marketplace concept for ages 10+, with adults involved in accounts, payments, communication, and meetups.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="openSell()">List something</button>
+          <a class="secondary" href="#browse">Explore listings</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="mini-label">TRENDING NOW</div>
+        <div class="product-emoji">🎮</div>
+        <h3>Gaming Controller</h3>
+        <p>Good condition • Parent-approved listing</p>
+        <strong>$18</strong>
+      </div>
+    </section>
+
+    <section id="browse" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">COMMUNITY MARKET</p>
+          <h2>Popular listings</h2>
+        </div>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search items..." oninput="renderListings()">
+          <select id="category" onchange="renderListings()">
+            <option value="All">All categories</option>
+            <option>Games</option><option>Toys</option><option>Art</option>
+            <option>Books</option><option>Clothes</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div id="listingGrid" class="grid"></div>
+    </section>
+
+    <section id="safety" class="safety">
+      <div>
+        <p class="eyebrow">SAFETY FIRST</p>
+        <h2>Kids can create.<br>Adults help keep it safe.</h2>
+        <p>KidMarket is designed around parent/guardian supervision. Never share your home address, phone number, school, passwords, or other private information.</p>
+      </div>
+      <div class="safety-list">
+        <div>🛡️ <b>Adult supervision</b><span>Accounts and transactions should involve a parent or guardian.</span></div>
+        <div>💳 <b>Safe payments</b><span>Parents/guardians handle payments and refunds.</span></div>
+        <div>📍 <b>Safe meetups</b><span>Use adult-approved public locations or shipping arrangements.</span></div>
+        <div>🚩 <b>Report problems</b><span>Block or report anything suspicious or unsafe.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <b>KidMarket</b><span>Prototype marketplace • Adult supervision required</span>
+  </footer>
+
+  <div id="sellModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close" onclick="closeSell()">×</button>
+      <p class="eyebrow">NEW LISTING</p>
+      <h2>Sell an item</h2>
+      <p class="muted">For this prototype, listings are stored only in this browser. A real launch would need secure accounts, moderation, and parent/guardian verification.</p>
+      <form onsubmit="addListing(event)">
+        <label>Item name<input id="itemName" required maxlength="50" placeholder="e.g. LEGO set"></label>
+        <label>Price ($)<input id="itemPrice" required type="number" min="0" max="10000" step="0.01" placeholder="10.00"></label>
+        <label>Category<select id="itemCategory"><option>Games</option><option>Toys</option><option>Art</option><option>Books</option><option>Clothes</option><option>Other</option></select></label>
+        <label>Emoji / picture symbol<input id="itemEmoji" maxlength="2" placeholder="🧸"></label>
+        <label><input id="adultConfirm" type="checkbox" required> My parent/guardian is involved in this listing.</label>
+        <button class="primary full" type="submit">Publish listing</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
